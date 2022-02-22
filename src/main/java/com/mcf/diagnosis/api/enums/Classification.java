@@ -1,6 +1,6 @@
-package com.mcf.diagnosis.api;
+package com.mcf.diagnosis.api.enums;
 
-public enum EnumClassification {
+public enum Classification {
 
 	RISCO,
 	ALERTA, 

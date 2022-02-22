@@ -1,9 +1,15 @@
 package com.mcf.diagnosis.api.entity;
 
-import java.math.BigDecimal;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -11,7 +17,18 @@ import lombok.Data;
 @Data
 public class Question {
 
+	@Id
 	private Long id;
+	
+	@NotNull
 	private String description; //descrição da questão = comando = título
-	private HashMap<Integer, BigDecimal> itens = new HashMap<>(); //cada questão possui um id e sua respectiva nota
+	
+	@Valid
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "id_questionaire")
+	private FinancialQuestionnaire questionnaire;
+	
+	@OneToMany(mappedBy = "question")
+	private List<Item> items = new ArrayList<Item>();
 }
