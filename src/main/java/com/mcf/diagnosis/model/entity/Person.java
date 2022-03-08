@@ -1,4 +1,4 @@
-package com.mcf.diagnosis.api.entity;
+package com.mcf.diagnosis.model.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,6 +33,6 @@ public class Person {
 	private String email;
 	
 	@NotBlank
-	private FinancialHabit financialHabit;
+	private Behavior behavior;
 
 }

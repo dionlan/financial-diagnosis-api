@@ -1,4 +1,4 @@
-package com.mcf.diagnosis.api.entity;
+package com.mcf.diagnosis.model.entity;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -11,13 +11,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.mcf.diagnosis.api.enums.Classification;
+import com.mcf.diagnosis.model.enums.Classification;
 
 import lombok.Data;
-
+/**
+ * Classe que especifica o diagnóstico financeiro
+ * @author dius_
+ *
+ */
 @Entity
 @Data
-public class FinancialQuestionnaire {
+public class Diagnostic {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +29,11 @@ public class FinancialQuestionnaire {
 	
 	private Person person;
 	
+	/**
+	 * mapeamento para o quesquinário (diagnóstico financeiro)
+	 */
 	@OneToMany(mappedBy = "question")
-	private ArrayList<Question> questionnaire = new ArrayList<>();
+	private ArrayList<Question> diagnostic = new ArrayList<>();
 	
 	private BigDecimal finalNote;
 	

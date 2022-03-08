@@ -1,4 +1,4 @@
-package com.mcf.diagnosis.api.entity;
+package com.mcf.diagnosis.model.entity;
 
 import java.time.OffsetDateTime;
 
@@ -19,7 +19,7 @@ public class Answer {
 	
 	private Person person;
 	
-	private FinancialQuestionnaire questionnaire;
+	private Diagnostic diagnostic;
 	
 	private Question question;
 	

@@ -1,4 +1,4 @@
-package com.mcf.diagnosis.api.entity;
+package com.mcf.diagnosis.model.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class Question {
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "id_questionaire")
-	private FinancialQuestionnaire questionnaire;
+	private Diagnostic diagnostic;
 	
 	@OneToMany(mappedBy = "question")
 	private List<Item> items = new ArrayList<Item>();

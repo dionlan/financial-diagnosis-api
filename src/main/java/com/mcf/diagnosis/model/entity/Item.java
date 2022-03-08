@@ -1,4 +1,4 @@
-package com.mcf.diagnosis.api.entity;
+package com.mcf.diagnosis.model.entity;
 
 import java.math.BigDecimal;
 

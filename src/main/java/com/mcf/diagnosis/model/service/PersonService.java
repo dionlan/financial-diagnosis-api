@@ -1,12 +1,12 @@
-package com.mcf.diagnosis.api.service;
+package com.mcf.diagnosis.model.service;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mcf.diagnosis.api.entity.Person;
-import com.mcf.diagnosis.api.repository.PersonRepository;
+import com.mcf.diagnosis.model.entity.Person;
+import com.mcf.diagnosis.model.repository.PersonRepository;
 
 @Service
 public class PersonService {

@@ -1,4 +1,4 @@
-package com.mcf.diagnosis.api.enums;
+package com.mcf.diagnosis.model.enums;
 
 public enum Classification {
 
