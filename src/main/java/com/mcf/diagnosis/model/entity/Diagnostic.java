@@ -40,3 +40,45 @@ public class Diagnostic {
 	@Enumerated(value = EnumType.STRING)
 	private Classification classification;
 }
+/**
+ * [
+    {
+        "idQuestao": "q1",
+        "idResposta": "r1",
+        "resposta": "asdf"
+    },
+    {
+        "idQuestao": "q29",
+        "idResposta": "r29",
+        "resposta": [
+            {
+                "id": 6,
+                "objetivo": "Montar minha reserva de segurança"
+            },
+            {
+                "id": 10,
+                "objetivo": "Melhorar a minha educação financeira"
+            },
+            {
+                "id": 11,
+                "objetivo": "Melhorar meus pensamentos e emoções relacionadas ao dinheiro"
+            },
+            {
+                "id": 12,
+                "objetivo": "Comprar algum bem pessoal ou imóvel"
+            },
+            []
+        ]
+    },
+    {
+        "idQuestao": "q30",
+        "idResposta": "r30",
+        "resposta": 7
+    },
+    {
+        "idQuestao": "q31",
+        "idResposta": "r31",
+        "resposta": "asdf"
+    }
+]
+ * */
