@@ -1,27 +1,29 @@
 package com.mcf.diagnosis.model.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-@Entity
 @Data
+@Entity
 public class Person {
 	
-	@Id
-	@EqualsAndHashCode.Include
+    @Id
+    @Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
+	@NotNull
 	private String name;
 	
+	@NotNull
+	private String email;
+	/*
 	@NotBlank
 	private Integer age;
 	
@@ -33,6 +35,6 @@ public class Person {
 	private String email;
 	
 	@NotBlank
-	private Behavior behavior;
+	private Behavior behavior;*/
 
 }

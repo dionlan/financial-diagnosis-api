@@ -1,15 +1,19 @@
 package com.mcf.diagnosis.model.entity;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.mcf.diagnosis.model.enums.Classification;
 
@@ -27,14 +31,17 @@ public class Diagnostic {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_person", referencedColumnName = "id")
 	private Person person;
 	
 	/**
 	 * mapeamento para o quesquinário (diagnóstico financeiro)
 	 */
-	@OneToMany(mappedBy = "question")
-	private ArrayList<Question> diagnostic = new ArrayList<>();
+	@OneToMany (mappedBy = "diagnostic")
+	private List<Answer> answers;
 	
+	@Column(name = "final_note")
 	private BigDecimal finalNote;
 	
 	@Enumerated(value = EnumType.STRING)

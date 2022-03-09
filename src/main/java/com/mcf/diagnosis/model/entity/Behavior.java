@@ -2,8 +2,6 @@ package com.mcf.diagnosis.model.entity;
 
 import java.util.HashMap;
 
-import javax.persistence.Entity;
-
 import lombok.Data;
 
 /**
@@ -12,7 +10,7 @@ import lombok.Data;
  *
  * Classe que especifica informações o comportamento (hábito, conduta, questões emocionais) financeiro do cliente
  */
-@Entity
+
 @Data
 public class Behavior {
 	
