@@ -7,12 +7,8 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class DiagnosticInput {
-	
-	@NotNull
-	private PersonReferenceInput person; 
+public class AnswerIdInput {
 
 	@NotNull
-	private AnswerReferenceInput answer;
-	
+	private Long id;
 }

@@ -1,5 +1,6 @@
 package com.mcf.diagnosis.model.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.CascadeType;
@@ -24,21 +25,18 @@ import lombok.Data;
  */
 @Entity
 @Data
-public class Diagnostic {
+public class Diagnostic implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_person", referencedColumnName = "id")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "diagnostic")
 	private Person person;
 	
-	/**
-	 * mapeamento para o quesquinário (diagnóstico financeiro)
-	 */
-	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "diagnostic")
     @JoinColumn(name = "id_answer", referencedColumnName = "id")
 	private Answer answer;
 	
@@ -49,46 +47,9 @@ public class Diagnostic {
 	@JsonIgnore
 	@Enumerated(value = EnumType.STRING)
 	private Classification classification;
+	
+	public void setPerson(Person person) {
+		this.person = person;
+		person.setDiagnostic(this);
+	}
 }
-/**
- * [
-    {
-        "idQuestao": "q1",
-        "idResposta": "r1",
-        "resposta": "asdf"
-    },
-    {
-        "idQuestao": "q29",
-        "idResposta": "r29",
-        "resposta": [
-            {
-                "id": 6,
-                "objetivo": "Montar minha reserva de segurança"
-            },
-            {
-                "id": 10,
-                "objetivo": "Melhorar a minha educação financeira"
-            },
-            {
-                "id": 11,
-                "objetivo": "Melhorar meus pensamentos e emoções relacionadas ao dinheiro"
-            },
-            {
-                "id": 12,
-                "objetivo": "Comprar algum bem pessoal ou imóvel"
-            },
-            []
-        ]
-    },
-    {
-        "idQuestao": "q30",
-        "idResposta": "r30",
-        "resposta": 7
-    },
-    {
-        "idQuestao": "q31",
-        "idResposta": "r31",
-        "resposta": "asdf"
-    }
-]
- * */

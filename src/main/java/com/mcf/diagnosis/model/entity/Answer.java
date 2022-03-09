@@ -4,9 +4,10 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -27,7 +28,23 @@ import lombok.Data;
 public class Answer {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@OneToOne
+    @JoinColumn(name = "id_diagnostic", referencedColumnName = "id")
+	private Diagnostic diagnostic;
+
+	@OneToOne
+    @JoinColumn(name = "id_person", referencedColumnName = "id")
+	private Person person;
+	
+	@OneToMany (mappedBy = "answer")
+	private List<Item> respostas = new ArrayList<>();
+	
+	/**
+	 * Respostas possíveis: id do item ou lista de itens selecionados (objetivos financeiros imediatos)
+	 */
 	
 	/* comentado para teste. Quando testar informando o nome, idade, email, telefone, descomentar e utilizar.
 	private Person person;
@@ -36,19 +53,15 @@ public class Answer {
 	
 	private Question question;
 	*/
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_person", referencedColumnName = "id")
-	private Person person;
-	
-	/**
-	 * Respostas possíveis: id do item ou lista de itens selecionados (objetivos financeiros imediatos)
-	 */
-	@OneToMany (mappedBy = "answer")
-	private List<Item> respostas = new ArrayList<>();
-	
+
 	//criar a classe de objetivos financeiros imediatos com id e descricao
 	
 	@CreationTimestamp
 	@Column(name = "reply_submission_date", nullable = false, columnDefinition = "datetime")
 	private OffsetDateTime replySubmissionDate;
+	
+	public void setPerson(Person person) {
+		this.person = person;
+		person.setDiagnostic(diagnostic);
+	}
 }
