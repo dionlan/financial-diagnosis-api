@@ -5,6 +5,10 @@ import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -14,7 +18,7 @@ import lombok.Data;
  *
  */
 @Data
-@Entity(name = "items_question")
+@Entity
 public class Item {
 	
 	@Id
@@ -24,6 +28,12 @@ public class Item {
 	
 	@Column(name = "note_item")
 	private BigDecimal noteItem; 
+	
+	@Valid
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "id_answer")
+	private Answer answer;
 	
 	/*
 	@Valid

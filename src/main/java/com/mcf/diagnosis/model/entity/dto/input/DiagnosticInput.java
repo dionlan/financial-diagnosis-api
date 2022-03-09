@@ -2,8 +2,6 @@ package com.mcf.diagnosis.model.entity.dto.input;
 
 import java.util.List;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -25,8 +23,6 @@ public class DiagnosticInput {
 	/**/
 	@Valid
 	@NotNull
-	@OneToOne
-	@JoinColumn(name = "email")
 	private Person person; 
 
 	private List<Answer> answers;

@@ -1,14 +1,16 @@
 package com.mcf.diagnosis.model.entity;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -34,21 +36,15 @@ public class Answer {
 	
 	private Question question;
 	*/
-	
-	@Valid
-	@NotNull
-	@ManyToOne
-	@JoinColumn(name = "id_diagnostic")
-	private Diagnostic diagnostic;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_person", referencedColumnName = "id")
+	private Person person;
 	
 	/**
 	 * Respostas possíveis: id do item ou lista de itens selecionados (objetivos financeiros imediatos)
 	 */
-	@Valid
-	@NotNull
-	@ManyToOne
-	@JoinColumn(name = "id_item")
-	private Item item;
+	@OneToMany (mappedBy = "answer")
+	private List<Item> respostas = new ArrayList<>();
 	
 	//criar a classe de objetivos financeiros imediatos com id e descricao
 	
