@@ -11,11 +11,10 @@ import lombok.Setter;
 public class PersonReferenceInput {
 	
 	@Valid
-	private DiagnosticIdInput id;
-
 	@NotNull
 	private String name;
 	
+	@Valid
 	@NotNull
 	private String email;
 }

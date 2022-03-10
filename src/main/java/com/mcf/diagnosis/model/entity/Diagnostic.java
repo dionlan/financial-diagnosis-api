@@ -2,6 +2,7 @@ package com.mcf.diagnosis.model.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,42 +15,53 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.mcf.diagnosis.model.enums.Classification;
 
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 /**
  * Classe que especifica o diagnóstico financeiro
  * @author dius_
  *
  */
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Setter
+@Getter
 @Entity
-@Data
 public class Diagnostic implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "diagnostic")
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "person_id")
 	private Person person;
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "diagnostic")
-    @JoinColumn(name = "id_answer", referencedColumnName = "id")
+	@OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "answer_id")
 	private Answer answer;
 	
-	@JsonIgnore
 	@Column(name = "final_note")
 	private BigDecimal finalNote;
 	
-	@JsonIgnore
 	@Enumerated(value = EnumType.STRING)
 	private Classification classification;
 	
+	@CreationTimestamp
+	@Column(name = "reply_submission_date", nullable = false, columnDefinition = "datetime")
+	private OffsetDateTime replySubmissionDate;
+	
 	public void setPerson(Person person) {
-		this.person = person;
-		person.setDiagnostic(this);
+		if(person != null) {
+			this.person = person;
+			person.setDiagnostic(this);
+		}
 	}
 }

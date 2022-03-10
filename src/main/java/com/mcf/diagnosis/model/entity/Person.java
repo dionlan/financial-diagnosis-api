@@ -1,6 +1,7 @@
 package com.mcf.diagnosis.model.entity;
 
-import javax.persistence.Column;
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,14 +10,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 @Entity
-public class Person {
+public class Person implements Serializable {
 	
-    @Id
-    @Column(name = "id")
+	private static final long serialVersionUID = 1L;
+
+	@EqualsAndHashCode.Include
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
@@ -26,9 +32,13 @@ public class Person {
 	@NotNull
 	private String email;
 	
-	@OneToOne
-    @JoinColumn(name = "id_diagnostic", referencedColumnName = "id")
+	@OneToOne(mappedBy = "person")
 	private Diagnostic diagnostic;
+	
+	@OneToOne
+    @JoinColumn(name = "answer_id")
+	private Answer answer;
+	
 	/*
 	@NotBlank
 	private Integer age;
@@ -42,5 +52,9 @@ public class Person {
 	
 	@NotBlank
 	private Behavior behavior;*/
-	
+	public void setDiagnostic(Diagnostic diagnostic) {
+		if(diagnostic != null) {
+			this.diagnostic = diagnostic;
+		}
+	}
 }

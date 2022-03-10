@@ -1,9 +1,7 @@
 package com.mcf.diagnosis.model.entity.dto;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 
-import com.mcf.diagnosis.model.entity.Question;
 import com.mcf.diagnosis.model.enums.Classification;
 
 import lombok.Getter;
@@ -17,7 +15,7 @@ public class DiagnosticDTO {
 	
 	private PersonDTO person;
 	
-	private ArrayList<Question> diagnostic = new ArrayList<>();
+	private AnswerDTO answer;
 	
 	private BigDecimal finalNote;
 	

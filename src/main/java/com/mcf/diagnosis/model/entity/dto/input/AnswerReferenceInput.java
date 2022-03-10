@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,11 +14,10 @@ import lombok.Setter;
 public class AnswerReferenceInput {
 
 	@Valid
-	private DiagnosticIdInput diagnostic;
+	@NotNull
+	private PersonReferenceInput person;
 	
 	@Valid
-	private PersonIdInput person;
-	
-	@Valid
+	@NotNull
 	private List<ItemReferenceInput> respostas = new ArrayList<>();
 }

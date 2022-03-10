@@ -9,16 +9,11 @@ INSERT INTO item (id, description, note_item) VALUES (1, 'Descrição teste 1', 
 
 CREATE TABLE IF NOT EXISTS answer (
 	id BIGINT NOT NULL AUTO_INCREMENT,
-	id_diagnostic BIGINT NULL,
-    id_person BIGINT NULL,
-    id_item BIGINT NULL,
-    reply_submission_date DATETIME NOT NULL,
+    person_id BIGINT NULL,
+    item_id BIGINT NULL,
     PRIMARY KEY(id) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-ALTER TABLE answer ADD CONSTRAINT fk_answer_diagnostic FOREIGN KEY (id_diagnostic) REFERENCES diagnostic (id);
-ALTER TABLE answer ADD CONSTRAINT fk_answer_person FOREIGN KEY (id_person) REFERENCES person (id);
-ALTER TABLE answer ADD CONSTRAINT fk_answer_item FOREIGN KEY (id_item) REFERENCES item (id);
-
-ALTER TABLE diagnostic ADD CONSTRAINT fk_diagnostic_answer FOREIGN KEY (id_answer) REFERENCES answer (id);
-
+ALTER TABLE answer ADD CONSTRAINT fk_answer_person FOREIGN KEY (person_id) REFERENCES person (id);
+ALTER TABLE answer ADD CONSTRAINT fk_answer_item FOREIGN KEY (item_id) REFERENCES item (id);
+ALTER TABLE diagnostic ADD CONSTRAINT fk_diagnostic_answer FOREIGN KEY (answer_id) REFERENCES answer (id);

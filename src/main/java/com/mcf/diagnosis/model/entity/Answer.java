@@ -1,21 +1,20 @@
 package com.mcf.diagnosis.model.entity;
 
-import java.time.OffsetDateTime;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.CreationTimestamp;
-
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * O serviço de respostas irá calcular o somatório das respostas (utilizado pelos planejadores) o cliente receberá o cálculo direto no front.
@@ -23,28 +22,27 @@ import lombok.Data;
  * @author dius_
  *
  */
-@Data
+@Setter
+@Getter
 @Entity
-public class Answer {
+public class Answer implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne
-    @JoinColumn(name = "id_diagnostic", referencedColumnName = "id")
+	@OneToOne(mappedBy = "answer", cascade = CascadeType.PERSIST)
 	private Diagnostic diagnostic;
 
-	@OneToOne
-    @JoinColumn(name = "id_person", referencedColumnName = "id")
+	@OneToOne(mappedBy = "answer")
 	private Person person;
 	
-	@OneToMany (mappedBy = "answer")
+	@OneToMany(mappedBy = "answer")
 	private List<Item> respostas = new ArrayList<>();
-	
-	/**
-	 * Respostas possíveis: id do item ou lista de itens selecionados (objetivos financeiros imediatos)
-	 */
+
 	
 	/* comentado para teste. Quando testar informando o nome, idade, email, telefone, descomentar e utilizar.
 	private Person person;
@@ -55,13 +53,4 @@ public class Answer {
 	*/
 
 	//criar a classe de objetivos financeiros imediatos com id e descricao
-	
-	@CreationTimestamp
-	@Column(name = "reply_submission_date", nullable = false, columnDefinition = "datetime")
-	private OffsetDateTime replySubmissionDate;
-	
-	public void setPerson(Person person) {
-		this.person = person;
-		person.setDiagnostic(diagnostic);
-	}
 }

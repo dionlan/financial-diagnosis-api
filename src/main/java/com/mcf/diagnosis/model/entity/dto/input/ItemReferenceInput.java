@@ -1,5 +1,6 @@
 package com.mcf.diagnosis.model.entity.dto.input;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
@@ -10,6 +11,7 @@ import lombok.Setter;
 public class ItemReferenceInput {
 	
 	@NotNull
+	@Valid
 	private Long id;
 
 }
