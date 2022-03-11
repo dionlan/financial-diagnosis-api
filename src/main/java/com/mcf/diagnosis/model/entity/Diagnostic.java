@@ -57,5 +57,9 @@ public class Diagnostic implements Serializable {
 	@CreationTimestamp
 	@Column(name = "reply_submission_date", nullable = false, columnDefinition = "datetime")
 	private OffsetDateTime replySubmissionDate;
-
+	
+	public void setPerson(Person person) {
+		this.person = person;
+		person.setAnswer(getAnswer());
+	}
 }

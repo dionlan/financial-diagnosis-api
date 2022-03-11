@@ -33,6 +33,15 @@ public class Person implements Serializable {
 	@NotNull
 	private String email;
 	
+	@OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "answer_id")
+	private Answer answer; 
+	
+	public void setAnswer(Answer answer) {
+		this.answer = answer;
+		answer.setPerson(this);
+	}
+	
 	/*
 	@OneToOne(mappedBy = "person")
 	private Diagnostic diagnostic;

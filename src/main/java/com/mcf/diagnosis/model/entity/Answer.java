@@ -36,7 +36,9 @@ public class Answer implements Serializable {
 	@OneToOne(mappedBy = "answer", cascade = CascadeType.PERSIST)
 	private Diagnostic diagnostic;
 */
-	
+	@OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "person_id")
+	private Person person;
 	
 	@OneToMany(targetEntity=Item.class, mappedBy="answer",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Item> respostas;
