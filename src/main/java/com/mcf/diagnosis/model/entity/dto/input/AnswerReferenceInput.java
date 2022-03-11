@@ -12,12 +12,8 @@ import lombok.Setter;
 @Setter
 @Getter
 public class AnswerReferenceInput {
-
-	@Valid
-	@NotNull
-	private PersonReferenceInput person;
 	
 	@Valid
 	@NotNull
-	private List<ItemReferenceInput> respostas = new ArrayList<>();
+	private List<ItemReferenceInput> respostas;
 }

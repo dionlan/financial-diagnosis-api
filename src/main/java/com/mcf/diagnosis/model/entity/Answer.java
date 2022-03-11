@@ -1,15 +1,15 @@
 package com.mcf.diagnosis.model.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -30,19 +30,16 @@ public class Answer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+	/*
 	@OneToOne(mappedBy = "answer", cascade = CascadeType.PERSIST)
 	private Diagnostic diagnostic;
-
-	@OneToOne(mappedBy = "answer")
-	private Person person;
+*/
 	
-	@OneToMany(mappedBy = "answer")
-	private List<Item> respostas = new ArrayList<>();
-
+	
+	@OneToMany(targetEntity=Item.class, mappedBy="answer",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Item> respostas;
 	
 	/* comentado para teste. Quando testar informando o nome, idade, email, telefone, descomentar e utilizar.
 	private Person person;
@@ -53,4 +50,5 @@ public class Answer implements Serializable {
 	*/
 
 	//criar a classe de objetivos financeiros imediatos com id e descricao
+	
 }

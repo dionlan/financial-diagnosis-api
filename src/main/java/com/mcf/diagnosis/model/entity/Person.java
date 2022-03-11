@@ -2,6 +2,7 @@ package com.mcf.diagnosis.model.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,13 +33,10 @@ public class Person implements Serializable {
 	@NotNull
 	private String email;
 	
+	/*
 	@OneToOne(mappedBy = "person")
 	private Diagnostic diagnostic;
-	
-	@OneToOne
-    @JoinColumn(name = "answer_id")
-	private Answer answer;
-	
+	*/
 	/*
 	@NotBlank
 	private Integer age;
@@ -51,10 +49,10 @@ public class Person implements Serializable {
 	private String email;
 	
 	@NotBlank
-	private Behavior behavior;*/
+	private Behavior behavior;
 	public void setDiagnostic(Diagnostic diagnostic) {
 		if(diagnostic != null) {
 			this.diagnostic = diagnostic;
 		}
-	}
+	}*/
 }

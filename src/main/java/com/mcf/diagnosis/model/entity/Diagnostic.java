@@ -46,7 +46,7 @@ public class Diagnostic implements Serializable {
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "answer_id")
-	private Answer answer;
+	private Answer answer; 
 	
 	@Column(name = "final_note")
 	private BigDecimal finalNote;
@@ -57,11 +57,5 @@ public class Diagnostic implements Serializable {
 	@CreationTimestamp
 	@Column(name = "reply_submission_date", nullable = false, columnDefinition = "datetime")
 	private OffsetDateTime replySubmissionDate;
-	
-	public void setPerson(Person person) {
-		if(person != null) {
-			this.person = person;
-			person.setDiagnostic(this);
-		}
-	}
+
 }
