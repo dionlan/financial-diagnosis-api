@@ -22,19 +22,22 @@ import com.mcf.diagnosis.model.service.DiagnosticService;
 public class PersonController {
 	
 	@Autowired
-	private DiagnosticInputController diagnosticInputController;
+	private DiagnosticInputController diagnosticInputDisassembler;
 	
 	@Autowired
-	private DiagnosticOutputController diagnosticOutputController;
+	private DiagnosticOutputController diagnosticInputEntity;
 	
 	@Autowired
 	private DiagnosticService service;
 	
 	@PostMapping("/salvar")
 	@ResponseStatus(HttpStatus.CREATED)
-	public DiagnosticDTO salvar(@RequestBody @Valid DiagnosticInput diagnosticInput) {
+	public DiagnosticDTO salvar(@RequestBody DiagnosticInput diagnosticInput) {
 		
-		Diagnostic diagnostic = diagnosticInputController.mapToEntity(diagnosticInput);
-		return diagnosticOutputController.mapToDto(service.salvar(diagnostic));
+		DiagnosticDTO diagnosticDTO = diagnosticInputDisassembler.mapToDTO(diagnosticInput);
+		
+		Diagnostic diagnosticEntity = diagnosticInputEntity.mapToEntity(diagnosticDTO);
+		
+		return diagnosticInputDisassembler.mapEntityDTO(service.salvar(diagnosticEntity));
 	}
 }

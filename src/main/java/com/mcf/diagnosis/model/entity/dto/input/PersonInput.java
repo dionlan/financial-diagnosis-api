@@ -8,10 +8,13 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class ItemReferenceInput {
+public class PersonInput {
 	
-	@NotNull
 	@Valid
-	private Long id;
-
+	@NotNull
+	private String name;
+	
+	@Valid
+	@NotNull
+	private String email;
 }

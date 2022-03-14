@@ -1,6 +1,8 @@
 package com.mcf.diagnosis.model.entity.dto.input;
 
-import javax.validation.Valid;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
@@ -8,13 +10,8 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class PersonReferenceInput {
+public class AnswerInput {
 	
-	@Valid
 	@NotNull
-	private String name;
-	
-	@Valid
-	@NotNull
-	private String email;
+	private Set<ItemInput> respostas = new HashSet<>();
 }

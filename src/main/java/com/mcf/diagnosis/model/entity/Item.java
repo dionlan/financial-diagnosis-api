@@ -10,11 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,17 +25,24 @@ import lombok.Setter;
 public class Item {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	private String description; 
 	
 	@Column(name = "note_item")
 	private BigDecimal noteItem; 
-	
-	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name="answer_id", referencedColumnName = "id", insertable = false, updatable = false) 
-	private Answer answer;
-	
+	/*
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	private Answer codigo;*/
+
+	private Long codigo;
+	/*
+	public void setResposta(Answer resposta) {
+		this.resposta = resposta;
+		resposta.setId(getCodigo());
+	}*/
+
 	/*
 	@Valid
 	@NotNull

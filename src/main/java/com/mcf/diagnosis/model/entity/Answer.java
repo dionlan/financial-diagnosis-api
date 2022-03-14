@@ -1,19 +1,21 @@
 package com.mcf.diagnosis.model.entity;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -30,7 +32,7 @@ public class Answer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	/*
 	@OneToOne(mappedBy = "answer", cascade = CascadeType.PERSIST)
@@ -40,9 +42,17 @@ public class Answer implements Serializable {
     @JoinColumn(name = "person_id")
 	private Person person;
 	
-	@OneToMany(targetEntity=Item.class, mappedBy="answer",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Item> respostas;
-	
+	@OneToMany(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="resposta_id")
+	private Set<Item> respostas = new HashSet<>();
+	/*
+    public void setRespostas(Set<Item> respostas) {
+    	this.respostas = respostas;
+    	this.respostas
+    		.stream()
+    		.forEach(codigo -> codigo.setResposta(this));
+    }*/
+    
 	/* comentado para teste. Quando testar informando o nome, idade, email, telefone, descomentar e utilizar.
 	private Person person;
 	

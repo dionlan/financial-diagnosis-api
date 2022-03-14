@@ -19,7 +19,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.mcf.diagnosis.model.enums.Classification;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 /**
@@ -27,27 +26,25 @@ import lombok.Setter;
  * @author dius_
  *
  */
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Setter
 @Getter
 @Entity
 public class Diagnostic implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
-	@EqualsAndHashCode.Include
+	private static final long serialVersionUID = 1L; 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "person_id")
-	private Person person;
+    @JoinColumn(name = "person_id")
+	private Person person; 
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "answer_id")
-	private Answer answer; 
-	
+	private Answer answer;
+
 	@Column(name = "final_note")
 	private BigDecimal finalNote;
 	
@@ -58,8 +55,4 @@ public class Diagnostic implements Serializable {
 	@Column(name = "reply_submission_date", nullable = false, columnDefinition = "datetime")
 	private OffsetDateTime replySubmissionDate;
 	
-	public void setPerson(Person person) {
-		this.person = person;
-		person.setAnswer(getAnswer());
-	}
 }
