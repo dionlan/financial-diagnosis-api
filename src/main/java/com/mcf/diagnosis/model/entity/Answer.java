@@ -10,12 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -34,10 +32,7 @@ public class Answer implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	/*
-	@OneToOne(mappedBy = "answer", cascade = CascadeType.PERSIST)
-	private Diagnostic diagnostic;
-*/
+
 	@OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "person_id")
 	private Person person;

@@ -19,7 +19,9 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.mcf.diagnosis.model.enums.Classification;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 /**
  * Classe que especifica o diagnóstico financeiro
@@ -29,6 +31,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Diagnostic implements Serializable {
 
 	private static final long serialVersionUID = 1L; 
@@ -55,4 +59,9 @@ public class Diagnostic implements Serializable {
 	@Column(name = "reply_submission_date", nullable = false, columnDefinition = "datetime")
 	private OffsetDateTime replySubmissionDate;
 	
+	public void setPerson(Person person) {
+		this.person = person;
+		person.setAnswer(getAnswer());
+		answer.setPerson(getPerson());
+	}
 }

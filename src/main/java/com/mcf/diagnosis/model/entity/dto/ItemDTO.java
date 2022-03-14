@@ -7,7 +7,5 @@ import lombok.Setter;
 @Getter
 public class ItemDTO {
 
-	private Long codigo;
-	
-	private String description;
+	private Long codigoResposta;
 }

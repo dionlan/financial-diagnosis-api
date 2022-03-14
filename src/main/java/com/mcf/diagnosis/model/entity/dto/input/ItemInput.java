@@ -10,9 +10,5 @@ import lombok.Setter;
 public class ItemInput {
 	
 	@NotNull
-	private Long codigo;
-	
-	@NotNull
-	private String description;
-
+	private Long codigoResposta;
 }
