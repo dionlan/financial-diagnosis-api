@@ -1,4 +1,4 @@
-package com.mcf.diagnosis.model.entity.dto.input;
+package com.mcf.diagnosis.model.entity.input;
 
 import javax.validation.constraints.NotNull;
 
@@ -10,5 +10,5 @@ import lombok.Setter;
 public class ItemInput {
 	
 	@NotNull
-	private Long codigoResposta;
+	private Long itemAnswer;
 }

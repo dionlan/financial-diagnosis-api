@@ -25,7 +25,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-public class Answer implements Serializable {
+public class Answers implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,12 +34,18 @@ public class Answer implements Serializable {
 	private Long id;
 
 	@OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "person_id")
 	private Person person;
-	
+
 	@OneToMany(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="resposta_id")
-	private Set<Item> respostas = new HashSet<>();
+	@JoinColumn(name="answers_id")
+	private Set<Item> answers = new HashSet<>();
+	
+	public void setPerson(Person person) {
+		this.person = person;
+		person.setAnswers(this);
+	}
+
+	
 	/*
     public void setRespostas(Set<Item> respostas) {
     	this.respostas = respostas;

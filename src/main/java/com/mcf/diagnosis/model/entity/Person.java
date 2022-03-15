@@ -31,9 +31,9 @@ public class Person implements Serializable {
 	@NotNull
 	private String email;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "answer_id")
-	private Answer answer;
+	private Answers answers;
 	
 	/*
 	@OneToOne(mappedBy = "person")
