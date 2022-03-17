@@ -1,22 +1,24 @@
 package com.mcf.diagnosis.model.entity.input;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
 @Getter
-public class AnswersInput {
+@AllArgsConstructor
+@NoArgsConstructor
+public class AnswerInput {
 	
 	@NotNull
 	private PersonInput person; 
 
-	@NotNull
-	private Set<ItemInput> answers = new HashSet<>();
+	private List<ItemInput> answers;
 
 	//private FinancialAnswersInputDto_old answer;
 	

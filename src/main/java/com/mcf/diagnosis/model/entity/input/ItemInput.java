@@ -1,7 +1,5 @@
 package com.mcf.diagnosis.model.entity.input;
 
-import javax.validation.constraints.NotNull;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +7,7 @@ import lombok.Setter;
 @Getter
 public class ItemInput {
 	
-	@NotNull
-	private Long itemAnswer;
+	private AnswerReferenciaId answer;
+	
+	private Long item;
 }

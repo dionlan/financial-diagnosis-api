@@ -4,18 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mcf.diagnosis.model.entity.Answers;
-import com.mcf.diagnosis.model.repository.AnswersRepository;
+import com.mcf.diagnosis.model.entity.Answer;
+import com.mcf.diagnosis.model.repository.AnswerRepository;
 
 @Service
-public class AnswersService {
+public class AnswerService {
 
 	@Autowired
-	private AnswersRepository repository;
+	private AnswerRepository repository;
 
 	@Transactional
-	public Answers salvar(Answers answers) {
+	public Answer salvar(Answer answer) {
 	
-		return repository.save(answers);
+		return repository.save(answer);
 	}
 }

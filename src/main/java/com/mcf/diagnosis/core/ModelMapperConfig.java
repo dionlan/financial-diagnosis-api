@@ -4,8 +4,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.mcf.diagnosis.model.entity.Answers;
-import com.mcf.diagnosis.model.entity.input.AnswersInput;
+import com.mcf.diagnosis.model.entity.Answer;
+import com.mcf.diagnosis.model.entity.input.AnswerInput;
 
 @Configuration
 public class ModelMapperConfig {
@@ -13,7 +13,7 @@ public class ModelMapperConfig {
 	@Bean
 	public ModelMapper ModelMapper() {
 		var modelMapper = new ModelMapper();
-		modelMapper.createTypeMap(Answers.class, AnswersInput.class);
+		modelMapper.createTypeMap(Answer.class, AnswerInput.class);
 		return modelMapper;
 	}
 }

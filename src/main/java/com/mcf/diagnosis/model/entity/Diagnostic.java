@@ -12,8 +12,12 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor */
 public class Diagnostic implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 /*
-	private static final long serialVersionUID = 1L; 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +29,7 @@ public class Diagnostic implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "answer_id")
-	private Set<Item> answers = new HashSet<>();
+	private Set<Item> answer = new HashSet<>();
 
 	@Column(name = "final_note")
 	private BigDecimal finalNote;

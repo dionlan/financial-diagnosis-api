@@ -2,13 +2,10 @@ package com.mcf.diagnosis.model.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
@@ -16,7 +13,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-@Entity
+@Entity 
 public class Person implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -31,9 +28,18 @@ public class Person implements Serializable {
 	@NotNull
 	private String email;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "answer_id")
-	private Answers answers;
+	/*
+	public void setAnswers(Answer answer) {
+        if (answer == null) {
+            if (this.answer != null) {
+                this.answer.setPerson(this);
+            }
+        }
+        else {
+        	answer.setPerson(this);
+        }
+        this.answer = answer;
+    }*/
 	
 	/*
 	@OneToOne(mappedBy = "person")
