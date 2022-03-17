@@ -11,17 +11,17 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class AnswerDto {
+public class ResponseDto {
 
 	private Long id;
 
 	private PersonDto person; 
 	
-	private List<ItemDto> answers = new ArrayList<>();
+	private List<ItemResponseDto> responses = new ArrayList<>();
 	/*
-	public void setAnswers(List<ItemDto> answer) {
-		this.answer = answer;
-    	this.answer
+	public void setAnswers(List<ItemResponseDto> response) {
+		this.response = response;
+    	this.response
     		.stream()
     		.forEach(item -> item.setItem(this));
 	}*/

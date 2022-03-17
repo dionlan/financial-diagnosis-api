@@ -5,9 +5,9 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class ItemInput {
+public class ItemResponseInput {
 	
-	private AnswerReferenciaId answer;
+	private ResponseReferenciaId response;
 	
-	private Long item;
+	private Long itemResponse;
 }

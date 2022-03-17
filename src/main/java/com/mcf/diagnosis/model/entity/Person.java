@@ -29,16 +29,16 @@ public class Person implements Serializable {
 	private String email;
 	
 	/*
-	public void setAnswers(Answer answer) {
-        if (answer == null) {
-            if (this.answer != null) {
-                this.answer.setPerson(this);
+	public void setAnswers(Response response) {
+        if (response == null) {
+            if (this.response != null) {
+                this.response.setPerson(this);
             }
         }
         else {
-        	answer.setPerson(this);
+        	response.setPerson(this);
         }
-        this.answer = answer;
+        this.response = response;
     }*/
 	
 	/*

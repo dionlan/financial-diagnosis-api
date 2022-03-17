@@ -4,22 +4,22 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.mcf.diagnosis.model.entity.Answer;
-import com.mcf.diagnosis.model.entity.dto.AnswerDto;
+import com.mcf.diagnosis.model.entity.Response;
+import com.mcf.diagnosis.model.entity.dto.ResponseDto;
 
 /**
  * Ao enviar a requisição, o objeto AnswerInputDoDtoDisassembler é montado para JSON -> DTO -> ENTIDADE (salvo na banco)
- * Na resposta (retorno do método) AnswerOutputToDtoAssembler é desmontado de ENTIDADE -> DTO 
+ * Na resposta (retorno do método) ResponseOutputToDtoAssembler é desmontado de ENTIDADE -> DTO 
  * 
  *
  */
 @Component
-public class AnswerOutputToDtoAssembler {
+public class ResponseOutputToDtoAssembler {
 	
 	@Autowired
 	private ModelMapper modelMapper;
 	
-	public AnswerDto mapEntityDto(Answer answer) {
+	public ResponseDto mapEntityDto(Response response) {
 		/*modelMapper.typeMap(DiagnosticDTO.class, Diagnostic.class).addMapping(DiagnosticDTO::getAnswer, Diagnostic::setAnswer);
 		
 		TypeMap<DiagnosticDTO, Diagnostic> tm = modelMapper.getTypeMap(DiagnosticDTO.class, Diagnostic.class);
@@ -29,7 +29,7 @@ public class AnswerOutputToDtoAssembler {
 	        System.out.println(m);
 	    }*/
 		
-		return modelMapper.map(answer, AnswerDto.class);
+		return modelMapper.map(response, ResponseDto.class);
 		
 	}
 }

@@ -28,8 +28,8 @@ public class Diagnostic implements Serializable {
 	private Person person; 
 	
 	@OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "answer_id")
-	private Set<Item> answer = new HashSet<>();
+    @JoinColumn(name = "response_id")
+	private Set<ItemResponse> response = new HashSet<>();
 
 	@Column(name = "final_note")
 	private BigDecimal finalNote;

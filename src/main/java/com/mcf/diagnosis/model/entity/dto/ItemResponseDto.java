@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class ItemDto {
+public class ItemResponseDto {
 	
-	private Long item;
+	private Long itemResponse;
 }

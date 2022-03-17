@@ -1,5 +1,6 @@
 package com.mcf.diagnosis.model.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,9 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -20,18 +19,16 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-public class Item {
+public class ItemResponse {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "id_answer")
-	private Answer answer;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "response_id")
+	private Response response;
 	
-	private Long item;
+	private Long itemResponse;
 
 }

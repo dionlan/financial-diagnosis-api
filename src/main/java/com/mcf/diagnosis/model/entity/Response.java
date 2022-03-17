@@ -13,7 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -25,8 +24,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@NoArgsConstructor
-public class Answer implements Serializable {
+public class Response implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -38,14 +36,14 @@ public class Answer implements Serializable {
 	@JoinColumn(name="person_id")
 	private Person person;
 	
-	@OneToMany (cascade = CascadeType.ALL, mappedBy = "answer")
-	private List<Item> answers;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "response")
+	private List<ItemResponse> responses;
 
-	public void setAnswers(List<Item> answers) {
-		this.answers = answers;
-    	this.answers
+	public void setResponses(List<ItemResponse> responses) {
+		this.responses = responses;
+    	this.responses
     		.stream()
-    		.forEach(answer -> answer.setAnswer(this));
+    		.forEach(response -> response.setResponse(this));
 	}
 	
 	/*
