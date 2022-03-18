@@ -1,9 +1,11 @@
 package com.mcf.diagnosis.model.entity;
 
 import java.io.Serializable;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -41,26 +45,13 @@ public class Response implements Serializable {
 
 	public void setResponses(List<ItemResponse> responses) {
 		this.responses = responses;
-    	this.responses
-    		.stream()
-    		.forEach(response -> response.setResponse(this));
+		this.responses
+			.stream()
+			.forEach(response -> response.setResponse(this));
 	}
 	
-	/*
-	public void setPerson(Person person) {
-		this.person = person;
-		person.setAnswers(this);
-	}*/
-
-    
-	/* comentado para teste. Quando testar informando o nome, idade, email, telefone, descomentar e utilizar.
-	private Person person;
-	
-	private Diagnostic diagnostic;
-	
-	private Question question;
-	*/
-
-	//criar a classe de objetivos financeiros imediatos com id e descricao
+	@CreationTimestamp
+	@Column(name = "reply_submission_date", nullable = false, columnDefinition = "datetime")
+	private OffsetDateTime replySubmissionDate;
 	
 }

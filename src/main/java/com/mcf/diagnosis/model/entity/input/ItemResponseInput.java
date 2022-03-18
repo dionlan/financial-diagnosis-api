@@ -1,5 +1,7 @@
 package com.mcf.diagnosis.model.entity.input;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,7 +9,9 @@ import lombok.Setter;
 @Getter
 public class ItemResponseInput {
 	
-	private ResponseReferenciaId response;
+	//private ResponseReferenciaId response;
 	
 	private Long itemResponse;
+	
+	private List<ItemResponsesInput> itemResponses;
 }

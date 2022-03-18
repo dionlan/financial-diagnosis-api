@@ -1,21 +1,22 @@
 package com.mcf.diagnosis.model.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+import com.mcf.diagnosis.model.enums.Classification;
 /**
  * Classe que especifica o diagnóstico financeiro
  * @author dius_
  *
-
 @Setter
 @Getter
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor */
+@Entity */
 public class Diagnostic implements Serializable {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 /*
 	
@@ -30,15 +31,12 @@ public class Diagnostic implements Serializable {
 	@OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "response_id")
 	private Set<ItemResponse> response = new HashSet<>();
+	*/
 
 	@Column(name = "final_note")
 	private BigDecimal finalNote;
 	
 	@Enumerated(value = EnumType.STRING)
 	private Classification classification;
-	
-	@CreationTimestamp
-	@Column(name = "reply_submission_date", nullable = false, columnDefinition = "datetime")
-	private OffsetDateTime replySubmissionDate;
-*/
+
 }
