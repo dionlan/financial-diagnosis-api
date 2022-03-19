@@ -1,7 +1,6 @@
 package com.mcf.diagnosis.model.entity;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -44,6 +43,8 @@ public class ItemResponse {
 	    	this.itemResponses
 	    		.stream()
 	    		.forEach(item -> item.setObjetivo(this));
+		} else {
+			return;
 		}
 	}
 }

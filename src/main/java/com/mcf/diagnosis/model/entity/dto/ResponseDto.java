@@ -18,13 +18,6 @@ public class ResponseDto {
 	private PersonDto person; 
 	
 	private List<ItemResponseDto> responses = new ArrayList<>();
-	/*
-	public void setAnswers(List<ItemResponseDto> response) {
-		this.response = response;
-    	this.response
-    		.stream()
-    		.forEach(item -> item.setItem(this));
-	}*/
 
 	private BigDecimal notaFinal;
 	
