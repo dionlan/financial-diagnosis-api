@@ -2,16 +2,13 @@ package com.mcf.diagnosis.model.entity;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -36,10 +33,11 @@ public class Response implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="person_id")
+	@OneToOne
+	@JoinColumn(name = "person_id")
 	private Person person;
 	
+	/*
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "response")
 	private List<ItemResponse> responses;
 
@@ -48,7 +46,7 @@ public class Response implements Serializable {
 		this.responses
 			.stream()
 			.forEach(response -> response.setResponse(this));
-	}
+	}*/
 	
 	@CreationTimestamp
 	@Column(name = "reply_submission_date", nullable = false, columnDefinition = "datetime")

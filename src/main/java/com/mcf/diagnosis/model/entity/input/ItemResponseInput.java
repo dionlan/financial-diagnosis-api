@@ -9,8 +9,6 @@ import lombok.Setter;
 @Getter
 public class ItemResponseInput {
 	
-	//private ResponseReferenciaId response;
-	
 	private Long itemResponse;
 	
 	private List<ItemResponsesInput> itemResponses;

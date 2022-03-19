@@ -11,7 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -22,18 +25,38 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ItemResponse {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "response_id")
-	private Response response;
 	
 	private Long itemResponse;
 	
+	@OneToMany(cascade = CascadeType.PERSIST)
+	private List<ItemResponses> itemResponses;
+	/*
+	public void setItemResponses(List<ItemResponses> itemResponses) {
+		if(itemResponses != null) {
+			this.itemResponses = itemResponses;
+	    	this.itemResponses
+	    		.stream()
+	    		.forEach(item -> item.setItemResponse(this));
+		} else {
+			return;
+		}
+	}*/
+	
+	/*
+	public void setPerson(Person person) {
+		this.person = person;
+		person.setResponses(null);
+	} */
+	
+	/*
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "objetivo")
 	private List<ItemResponses> itemResponses;
 
@@ -46,5 +69,5 @@ public class ItemResponse {
 		} else {
 			return;
 		}
-	}
+	}*/
 }

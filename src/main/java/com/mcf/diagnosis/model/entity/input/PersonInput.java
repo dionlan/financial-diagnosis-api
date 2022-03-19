@@ -1,6 +1,7 @@
 package com.mcf.diagnosis.model.entity.input;
 
-import javax.validation.Valid;
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
@@ -10,11 +11,12 @@ import lombok.Setter;
 @Getter
 public class PersonInput {
 	
-	@Valid
 	@NotNull
 	private String name;
 	
-	@Valid
 	@NotNull
 	private String email;
+	
+	@NotNull
+	private List<ItemResponseInput> responses;
 }
