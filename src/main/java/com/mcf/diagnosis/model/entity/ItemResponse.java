@@ -36,7 +36,7 @@ public class ItemResponse {
 	private Long itemResponse;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "item_response_id", referencedColumnName = "id")
+	@JoinColumn(name = "item_response_id", referencedColumnName = "id") //fk item_responses_id referenciando o id dessa classe ItemResponse
 	private List<ItemResponses> itemResponses = new ArrayList<>(); 
 	/*
 	public void setItemResponses(List<ItemResponses> itemResponses) {
