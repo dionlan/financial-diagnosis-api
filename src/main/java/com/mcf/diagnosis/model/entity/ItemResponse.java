@@ -32,6 +32,8 @@ public class ItemResponse {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private Long question;
+	
 	private Long itemResponse;
 	
 	//entidade dona do relacionamento(pai); Cria uma CONSTRAINT FK e coluna na tabela ITEM_RESPONSES e refencia o id desta classe ITEM_RESPONSE

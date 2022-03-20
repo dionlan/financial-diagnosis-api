@@ -14,6 +14,8 @@ import lombok.Setter;
 @JsonInclude(Include.NON_NULL)
 public class ItemResponseDto {
 	
+	private Long question;
+	
 	private Long itemResponse;
 	
 	@JsonInclude(Include.NON_EMPTY)

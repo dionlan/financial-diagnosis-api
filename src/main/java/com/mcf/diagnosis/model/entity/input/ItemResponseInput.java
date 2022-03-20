@@ -9,6 +9,8 @@ import lombok.Setter;
 @Getter
 public class ItemResponseInput {
 	
+	private Long question;
+	
 	private Long itemResponse;
 	
 	private List<ItemResponsesInput> itemResponses;
