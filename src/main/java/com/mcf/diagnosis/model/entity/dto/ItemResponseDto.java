@@ -16,13 +16,6 @@ public class ItemResponseDto {
 	
 	private Long itemResponse;
 	
+	@JsonInclude(Include.NON_EMPTY)
 	private List<ItemResponsesInput> itemResponses;
-	
-	public void setItemResponse(Long itemResponse) {
-		if(itemResponse != null) {
-			this.itemResponse = itemResponse;
-		} else {
-			return;
-		}
-	}
 }

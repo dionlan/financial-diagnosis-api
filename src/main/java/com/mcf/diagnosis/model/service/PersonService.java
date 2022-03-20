@@ -10,8 +10,7 @@ import com.mcf.diagnosis.model.repository.PersonRepository;
 @Service
 public class PersonService {
 
-	@Autowired
-	private PersonRepository personRepository;
+	@Autowired private PersonRepository personRepository;
 
 	@Transactional
 	public Person salvar(Person person) {

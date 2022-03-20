@@ -1,6 +1,7 @@
 package com.mcf.diagnosis.model.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,9 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
@@ -36,8 +35,19 @@ public class Person implements Serializable {
 	@NotNull
 	private String email;
 	
-	@OneToMany(cascade = CascadeType.PERSIST)
-	private List<ItemResponse> responses;
+	@OneToMany(mappedBy = "itemResponses", cascade = CascadeType.ALL)
+	private List<ItemResponse> responses = new ArrayList<>();
+
+	public void setResponses(List<ItemResponse> responses) {
+		if(responses != null) {
+			this.responses = responses;
+	    	this.responses
+	    		.stream()
+	    		.forEach(item -> item.setPerson(this));
+		} else {
+			return;
+		}
+	}
 	
 	/*
 	public void setAnswers(Response response) {

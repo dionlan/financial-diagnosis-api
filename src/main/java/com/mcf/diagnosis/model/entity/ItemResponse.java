@@ -1,5 +1,6 @@
 package com.mcf.diagnosis.model.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -7,12 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,7 +26,6 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class ItemResponse {
 
 	@Id
@@ -36,9 +34,12 @@ public class ItemResponse {
 	
 	private Long itemResponse;
 	
-	@OneToMany(cascade = CascadeType.PERSIST)
-	private List<ItemResponses> itemResponses;
-	/*
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Person person; 
+	
+	@OneToMany(mappedBy = "itemResponse", cascade = CascadeType.ALL)
+	private List<ItemResponses> itemResponses = new ArrayList<>(); 
+	
 	public void setItemResponses(List<ItemResponses> itemResponses) {
 		if(itemResponses != null) {
 			this.itemResponses = itemResponses;
@@ -48,8 +49,8 @@ public class ItemResponse {
 		} else {
 			return;
 		}
-	}*/
-	
+	}
+
 	/*
 	public void setPerson(Person person) {
 		this.person = person;
@@ -70,4 +71,5 @@ public class ItemResponse {
 			return;
 		}
 	}*/
+	
 }
