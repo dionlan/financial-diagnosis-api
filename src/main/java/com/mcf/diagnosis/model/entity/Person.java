@@ -9,9 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +22,7 @@ import lombok.Setter;
 @Getter
 @Entity 
 @NoArgsConstructor
+@AllArgsConstructor
 //@Builder
 public class Person implements Serializable {
 	
@@ -35,9 +38,10 @@ public class Person implements Serializable {
 	@NotNull
 	private String email;
 	
-	@OneToMany(mappedBy = "itemResponses", cascade = CascadeType.ALL)
+	@JoinColumn(name = "person_id")
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<ItemResponse> responses = new ArrayList<>();
-
+/*
 	public void setResponses(List<ItemResponse> responses) {
 		if(responses != null) {
 			this.responses = responses;
@@ -47,20 +51,10 @@ public class Person implements Serializable {
 		} else {
 			return;
 		}
-	}
+	}*/
 	
 	/*
-	public void setAnswers(Response response) {
-        if (response == null) {
-            if (this.response != null) {
-                this.response.setPerson(this);
-            }
-        }
-        else {
-        	response.setPerson(this);
-        }
-        this.response = response;
-    }*/
+
 	
 	/*
 	@OneToOne(mappedBy = "person")

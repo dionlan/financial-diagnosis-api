@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -34,12 +35,13 @@ public class ItemResponse {
 	
 	private Long itemResponse;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Person person; 
+	@ManyToOne
+	private Person person;
 	
-	@OneToMany(mappedBy = "itemResponse", cascade = CascadeType.ALL)
+	@JoinColumn(name = "item_response_id")
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<ItemResponses> itemResponses = new ArrayList<>(); 
-	
+	/*
 	public void setItemResponses(List<ItemResponses> itemResponses) {
 		if(itemResponses != null) {
 			this.itemResponses = itemResponses;
@@ -49,7 +51,7 @@ public class ItemResponse {
 		} else {
 			return;
 		}
-	}
+	}*/
 
 	/*
 	public void setPerson(Person person) {

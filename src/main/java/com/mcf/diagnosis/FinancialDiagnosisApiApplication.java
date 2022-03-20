@@ -1,24 +1,12 @@
 package com.mcf.diagnosis;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.mcf.diagnosis.model.entity.ItemResponse;
-import com.mcf.diagnosis.model.entity.ItemResponses;
-import com.mcf.diagnosis.model.entity.Person;
-import com.mcf.diagnosis.model.repository.ItemResponseRepository;
-import com.mcf.diagnosis.model.repository.ItemResponsesRepository;
-import com.mcf.diagnosis.model.repository.PersonRepository;
-
 @SpringBootApplication
 public class FinancialDiagnosisApiApplication implements CommandLineRunner{
-	
+	/*
 	@Autowired
 	private PersonRepository personRepository;
 	
@@ -27,7 +15,7 @@ public class FinancialDiagnosisApiApplication implements CommandLineRunner{
 	
 	@Autowired
 	private ItemResponsesRepository itemResponsesRepository;
-
+	*/
 	public static void main(String[] args) {
 		SpringApplication.run(FinancialDiagnosisApiApplication.class, args);
 	}
