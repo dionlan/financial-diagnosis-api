@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,8 +38,9 @@ public class Person implements Serializable {
 	@NotNull
 	private String email;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "person_id", referencedColumnName = "id") //fk person_id referenciando o id dessa classe Person
+	//fk ADICIONADA e criada a coluna person_id na tabela ITEM_RESPONSE referenciando o id desta classe Person
+	@OneToMany(cascade = CascadeType.ALL) //@OneToMany + @JoinColumn associação unidirecional = APENAS a entidade PAI mapeia a relação
+	@JoinColumn(name = "person_id", referencedColumnName = "id") 
 	private List<ItemResponse> responses = new ArrayList<>();
 /*
 	public void setResponses(List<ItemResponse> responses) {
