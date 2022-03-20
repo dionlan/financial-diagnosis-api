@@ -38,8 +38,8 @@ public class Person implements Serializable {
 	@NotNull
 	private String email;
 	
-	@JoinColumn(name = "person_id")
 	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "person_id", referencedColumnName = "id")
 	private List<ItemResponse> responses = new ArrayList<>();
 /*
 	public void setResponses(List<ItemResponse> responses) {

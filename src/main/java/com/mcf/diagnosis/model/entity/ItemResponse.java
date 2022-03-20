@@ -35,11 +35,8 @@ public class ItemResponse {
 	
 	private Long itemResponse;
 	
-	@ManyToOne
-	private Person person;
-	
-	@JoinColumn(name = "item_response_id")
 	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "item_response_id", referencedColumnName = "id")
 	private List<ItemResponses> itemResponses = new ArrayList<>(); 
 	/*
 	public void setItemResponses(List<ItemResponses> itemResponses) {
