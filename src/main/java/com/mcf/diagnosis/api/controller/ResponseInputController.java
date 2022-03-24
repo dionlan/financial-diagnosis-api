@@ -3,6 +3,7 @@ package com.mcf.diagnosis.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -13,7 +14,9 @@ import com.mcf.diagnosis.api.IOController.PersonOutputToDtoAssembler;
 import com.mcf.diagnosis.model.entity.Person;
 import com.mcf.diagnosis.model.entity.dto.PersonDto;
 import com.mcf.diagnosis.model.entity.input.PersonInput;
-import com.mcf.diagnosis.model.repository.PersonRepository;
+import com.mcf.diagnosis.model.exception.PersonNotFoundException;
+import com.mcf.diagnosis.model.exception.RegraNegocioException;
+import com.mcf.diagnosis.model.service.PersonService;
 
 @RestController
 @RequestMapping("/api/diagnostico")
@@ -25,14 +28,26 @@ public class ResponseInputController {
 	@Autowired
 	private PersonOutputToDtoAssembler responseOutputToDtoAssembler; //saída da resposta de entidade modelo e desmontada em DTO.
 	
-	@Autowired private PersonRepository personRepository;
+	@Autowired private PersonService personService;
 
 	@PostMapping("/salvar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public PersonDto salvar(@RequestBody PersonInput personInput) {
 		
-		Person person = responseInputToDtoDisassembler.mapToDto(personInput);
+		Person person = responseInputToDtoDisassembler.mapToEntity(personInput);
 		
-		return responseOutputToDtoAssembler.mapEntityDto(personRepository.save(person));
+		return responseOutputToDtoAssembler.mapEntityDto(personService.salvar(person));
+	}
+	
+	@PutMapping("/{id}")
+	public PersonDto atualizar(PersonInput personInput) {
+		String email = personInput.getEmail();
+		try {
+			Person person = personService.obterPorEmail(email);
+			responseInputToDtoDisassembler.mapToEntityUpdate(personInput, person);
+			return responseOutputToDtoAssembler.mapEntityDto(personService.salvar(person));
+		}catch(PersonNotFoundException e) {
+			throw new RegraNegocioException(e.getMessage());
+		}
 	}
 }

@@ -21,8 +21,12 @@ public class PersonInputToDtoDisassembler {
 	@Autowired
 	private ModelMapper modelMapper;
 	
-	public Person mapToDto(PersonInput personInput) {
+	public Person mapToEntity(PersonInput personInput) {
 		
 		return modelMapper.map(personInput, Person.class);
+	}
+	
+	public void mapToEntityUpdate(PersonInput personInput, Person person) {
+		modelMapper.map(personInput, person);
 	}
 }

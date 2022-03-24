@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mcf.diagnosis.model.entity.Person;
+import com.mcf.diagnosis.model.exception.EntidadeNaoEncontradaException;
 import com.mcf.diagnosis.model.repository.PersonRepository;
 
 @Service
@@ -15,5 +16,17 @@ public class PersonService {
 	@Transactional
 	public Person salvar(Person person) {
 		return personRepository.save(person);
+	}
+	
+	public Person obterPorEmail(String email) {
+		try {
+			
+			return personRepository.findByEmail(email);
+			
+		}catch(EntidadeNaoEncontradaException e) {
+			
+			throw new EntidadeNaoEncontradaException(e.getMessage());
+			
+		}
 	}
 }
