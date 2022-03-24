@@ -2,6 +2,7 @@ package com.mcf.diagnosis.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,13 +40,16 @@ public class ResponseInputController {
 		return responseOutputToDtoAssembler.mapEntityDto(personService.salvar(person));
 	}
 	
-	@PutMapping("/{id}")
-	public PersonDto atualizar(PersonInput personInput) {
-		String email = personInput.getEmail();
+	@PutMapping("/{email}")
+	public PersonDto buscar(@PathVariable String email, @RequestBody PersonInput personInput) {
+		
 		try {
 			Person person = personService.obterPorEmail(email);
+			
 			responseInputToDtoDisassembler.mapToEntityUpdate(personInput, person);
+			
 			return responseOutputToDtoAssembler.mapEntityDto(personService.salvar(person));
+			
 		}catch(PersonNotFoundException e) {
 			throw new RegraNegocioException(e.getMessage());
 		}

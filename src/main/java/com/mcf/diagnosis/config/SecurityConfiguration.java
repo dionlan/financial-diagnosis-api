@@ -37,6 +37,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.csrf().disable()
 			.authorizeRequests()
 				.antMatchers(HttpMethod.POST, "/api/diagnostico/salvar").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/diagnostico/{id}").permitAll()
+				.antMatchers(HttpMethod.PUT, "/api/diagnostico/{email}").permitAll()
 				.anyRequest().authenticated()
 		.and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

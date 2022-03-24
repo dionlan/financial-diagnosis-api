@@ -7,5 +7,6 @@ import com.mcf.diagnosis.model.entity.Person;
 public interface PersonRepository extends JpaRepository<Person, Long>{
 	
 	Person findByEmail(String email);
+	//Person findById(Long id);
 
 }
