@@ -21,6 +21,5 @@ public class PersonInput {
 	@NotNull
 	private String email;
 	
-	@NotNull
 	private List<ItemResponseInput> responses;
 }
