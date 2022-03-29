@@ -21,6 +21,7 @@ public class EmailService {
 	@Autowired
 	private JavaMailSender emailSender;
 
+	@SuppressWarnings("finally")
 	public Email sendEmail(Email email) {
 		email.setSendDateEmail(LocalDateTime.now());
 		 try {

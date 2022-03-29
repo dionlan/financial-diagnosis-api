@@ -61,7 +61,7 @@ public class Person implements Serializable {
 	
 	/*
 	@OneToOne(mappedBy = "person")
-	private Diagnostic diagnostic;
+	private PreDiagnostic diagnostic;
 	
 	@NotBlank
 	private Integer age;
@@ -75,7 +75,7 @@ public class Person implements Serializable {
 	
 	@NotBlank
 	private Behavior behavior;
-	public void setDiagnostic(Diagnostic diagnostic) {
+	public void setDiagnostic(PreDiagnostic diagnostic) {
 		if(diagnostic != null) {
 			this.diagnostic = diagnostic;
 		}
