@@ -20,9 +20,9 @@ public class ResponseOutputToDtoAssembler {
 	private ModelMapper modelMapper;
 	
 	public ResponseDto mapEntityDto(Response response) {
-		/*modelMapper.typeMap(DiagnosticDTO.class, PreDiagnostic.class).addMapping(DiagnosticDTO::getAnswer, PreDiagnostic::setAnswer);
+		/*modelMapper.typeMap(DiagnosticDTO.class, PreDiagnosticDto.class).addMapping(DiagnosticDTO::getAnswer, PreDiagnosticDto::setAnswer);
 		
-		TypeMap<DiagnosticDTO, PreDiagnostic> tm = modelMapper.getTypeMap(DiagnosticDTO.class, PreDiagnostic.class);
+		TypeMap<DiagnosticDTO, PreDiagnosticDto> tm = modelMapper.getTypeMap(DiagnosticDTO.class, PreDiagnosticDto.class);
 	    List<Mapping> list = tm.getMappings();
 	    for (Mapping m : list)
 	    {
