@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +27,7 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "item_response")
 public class ItemResponse {
 
 	@Id
@@ -41,6 +43,8 @@ public class ItemResponse {
 	@OneToMany(cascade = CascadeType.ALL)//@OneToMany + @JoinColumn associação unidirecional = APENAS a entidade PAI mapeia a relação
 	@JoinColumn(name = "item_response_id", referencedColumnName = "id") //fk item_responses_id referenciando o id dessa classe ItemResponse
 	private List<ItemResponses> itemResponses = new ArrayList<>(); 
+	
+	
 	/*
 	public void setItemResponses(List<ItemResponses> itemResponses) {
 		if(itemResponses != null) {

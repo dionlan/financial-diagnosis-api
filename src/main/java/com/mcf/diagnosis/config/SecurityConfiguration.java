@@ -40,6 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				.antMatchers(HttpMethod.GET, "/api/diagnostico/{id}").permitAll()
 				.antMatchers(HttpMethod.PUT, "/api/diagnostico/{email}").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/email/sending-email").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/previadiagnostico/salvar").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/previadiagnostico/{email}").permitAll()
 				.anyRequest().authenticated()
 		.and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
