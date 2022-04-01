@@ -40,11 +40,11 @@ public class ResponseInputController {
 		return responseOutputToDtoAssembler.mapEntityDto(personService.salvar(person));
 	}
 	
-	@PutMapping("/{email}")
-	public PersonDto buscar(@PathVariable String email, @RequestBody PersonInput personInput) {
+	@PutMapping("/{id}")
+	public PersonDto buscar(@PathVariable Long id, @RequestBody PersonInput personInput) {
 		
 		try {
-			Person person = personService.obterPorEmail(email);
+			Person person = personService.obterPorId(id);
 			
 			responseInputToDtoDisassembler.mapToEntityUpdate(personInput, person);
 			
