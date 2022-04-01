@@ -6,7 +6,7 @@ public enum Classification {
 	ALERTA("Alerta"), 
 	MEDIANO("Mediano"), 
 	FAVORAVEL("Favorável"),
-	BEM_ESTAR_FINANCEIRO("Bem-Estar-Financeiro");
+	BEM_ESTAR_FINANCEIRO("Bem estar financeiro");
 	
 	private String value;
 
