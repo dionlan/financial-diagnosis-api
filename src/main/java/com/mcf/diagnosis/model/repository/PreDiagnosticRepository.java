@@ -15,4 +15,8 @@ public interface PreDiagnosticRepository extends JpaRepository<PreDiagnostic, Lo
 				+ " AND i.itemResponse = q.itemResponse "
 				+ "	AND p.id = :personId " )
 		BigDecimal obterFinalNote(@Param("personId") Long personId);
+		
+		@Query(value = " SELECT p.classification, finalNote FROM PreDiagnostic p "
+				+ " WHERE p.personId = :id " )
+		PreDiagnostic obterPreviaDiagnostico(@Param("id") Long id);
 }

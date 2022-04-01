@@ -27,7 +27,7 @@ public class PreDiagnosticService {
 	}
 	
 	@Transactional
-	public PreDiagnostic buscarPreDiagnostic(Long id) {
-		return preDiagnosticRepository.getById(id);
+	public PreDiagnostic buscarPreDiagnostico(Long id) {
+		return preDiagnosticRepository.obterPreviaDiagnostico(id);
 	}
 }

@@ -52,7 +52,7 @@ public class PreDiagnosticController {
 	
 	@GetMapping("/{id}")
 	public PreDiagnosticDto buscarResultadoPrevio(@PathVariable Long id) {
-		PreDiagnostic preDiagnostic = preDiagnosticService.buscarPreDiagnostic(id);
+		PreDiagnostic preDiagnostic = preDiagnosticService.buscarPreDiagnostico(id);
 		
 		return preDiagnosticOutputToDtoAssembler.mapEntityDto(preDiagnostic);
 	}
