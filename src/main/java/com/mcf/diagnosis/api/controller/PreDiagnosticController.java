@@ -40,16 +40,24 @@ public class PreDiagnosticController {
 		PreDiagnostic preDiagnostic = preDiagnosticInputToDtoDisassembler.mapToEntity(preDiagnosticInput);
 		BigDecimal notaFinal = preDiagnosticService.obterNotaFinal(preDiagnosticInput.getPersonId());
 		preDiagnostic.setFinalNote(notaFinal);
-		if(notaFinal.compareTo(new BigDecimal(10)) < 0) {
-			preDiagnostic.setClassification(Classification.RISCO);
-		}else if (notaFinal.compareTo(new BigDecimal(10)) > 0 && notaFinal.compareTo(new BigDecimal(50)) < 0) {
-			preDiagnostic.setClassification(Classification.MEDIANO);
-		}else if (notaFinal.compareTo(new BigDecimal(50)) > 0) {
+		if(notaFinal.compareTo(new BigDecimal(80)) > 0){
 			preDiagnostic.setClassification(Classification.BEM_ESTAR_FINANCEIRO);
+			
+		}else if(notaFinal.compareTo(new BigDecimal(60)) > 0){
+			preDiagnostic.setClassification(Classification.FAVORAVEL);
+			
+		}else if(notaFinal.compareTo(new BigDecimal(40)) > 0){
+			preDiagnostic.setClassification(Classification.MEDIANO);
+			
+		}else if(notaFinal.compareTo(new BigDecimal(20)) > 0){
+			preDiagnostic.setClassification(Classification.ALERTA);
+			
+		}else{
+			preDiagnostic.setClassification(Classification.RISCO);
+			
 		}
 		return preDiagnosticOutputToDtoAssembler.mapEntityDto(preDiagnosticService.salvar(preDiagnostic));
 	}
-	
 	@GetMapping("/{id}")
 	public PreDiagnosticDto buscarResultadoPrevio(@PathVariable Long id) {
 		PreDiagnostic preDiagnostic = preDiagnosticService.buscarPreDiagnostico(id);

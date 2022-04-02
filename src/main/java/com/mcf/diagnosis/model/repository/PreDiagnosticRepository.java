@@ -13,6 +13,7 @@ public interface PreDiagnosticRepository extends JpaRepository<PreDiagnostic, Lo
 		@Query(value = " SELECT SUM(q.note) FROM ItemResponse i, ItemsQuestion q , Person p "
 				+ " WHERE i.question = q.question "
 				+ " AND i.itemResponse = q.itemResponse "
+				+ " AND p.id = i.personId "
 				+ "	AND p.id = :personId " )
 		BigDecimal obterFinalNote(@Param("personId") Long personId);
 		
