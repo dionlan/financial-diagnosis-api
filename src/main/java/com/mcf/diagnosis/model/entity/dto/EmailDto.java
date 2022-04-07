@@ -22,4 +22,7 @@ public class EmailDto {
 	private String subject;*/
 	
 	private String file64;
+	
+	private Long personId;
+	//private Person personId;
 }

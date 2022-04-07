@@ -35,5 +35,6 @@ public class Email {
 	private LocalDateTime sendDateEmail;
 	private StatusEmail statusEmail;
 	
-	private Person personId;
+	private Long personId;
+	//private Person personId; TODO: refatorar para considerar o relacionamento entre Person e Email
 }
