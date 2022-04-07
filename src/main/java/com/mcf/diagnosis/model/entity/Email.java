@@ -34,4 +34,6 @@ public class Email {
 	private String file64;
 	private LocalDateTime sendDateEmail;
 	private StatusEmail statusEmail;
+	
+	private Person personId;
 }

@@ -8,16 +8,18 @@ import lombok.Data;
 @Data
 public class EmailDto {
 
-	@NotBlank
+	//@NotBlank
 	private String ownerRef;
-	@NotBlank
+	//@NotBlank
 	@Email
 	private String emailFrom;
+	
 	@Email
 	@NotBlank
 	private String emailTo;
-	@NotBlank
-	private String subject;
+	
+	/*@NotBlank
+	private String subject;*/
 	
 	private String file64;
 }
