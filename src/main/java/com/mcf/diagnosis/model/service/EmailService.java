@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -23,10 +24,14 @@ public class EmailService {
 	
 	@Autowired
 	private JavaMailSender emailSender;
+	
+	@Value("${email.emailFrom}")
+	private String emailFrom;
 
 	@SuppressWarnings("finally")
 	public Email sendEmail(Email email) {
 		email.setSendDateEmail(LocalDateTime.now());
+		email.setEmailFrom(emailFrom);
 		email.setSubject("Diagnóstico Financeiro - Prévia");
 		 try {
 			 

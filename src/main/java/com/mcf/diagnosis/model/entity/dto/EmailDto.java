@@ -11,7 +11,7 @@ public class EmailDto {
 	//@NotBlank
 	private String ownerRef;
 	//@NotBlank
-	@Email
+	//@Email
 	private String emailFrom;
 	
 	@Email
