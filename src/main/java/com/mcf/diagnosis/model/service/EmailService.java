@@ -27,13 +27,14 @@ public class EmailService {
 	@SuppressWarnings("finally")
 	public Email sendEmail(Email email) {
 		email.setSendDateEmail(LocalDateTime.now());
+		email.setSubject("Diagnóstico Financeiro - Prévia");
 		 try {
 			 
 			MimeMessage mail = emailSender.createMimeMessage();
 			MimeMessageHelper message = new MimeMessageHelper(mail, true);
 			message.setFrom(email.getEmailFrom());
 			message.setTo(email.getEmailTo());
-			message.setSubject("Diagnóstico Financeiro - Prévia");
+			message.setSubject(email.getSubject());
 			message.setText("<p><span style='font-family: \"Lucida Console\", Monaco, monospace; font-size: 14px;'>Boa noite, Sr. Afr&acirc;nio Alves de Jesus. Como vai?</span></p>\r\n"
 					+ "<p><span style='font-family: \"Lucida Console\", Monaco, monospace; font-size: 14px;'>Segue a pr&eacute;via de sua sa&uacute;de financeira.</span></p>\r\n"
 					+ "<p><span style='font-family: \"Lucida Console\", Monaco, monospace; font-size: 14px;'>Sua nota parcial foi&nbsp;<strong>95&nbsp;</strong>de 100 pontos.</span></p>\r\n"
@@ -44,9 +45,9 @@ public class EmailService {
 			String value = email.getFile64().replaceFirst("^data:image/[^;]*;base64,?", "");
 			byte[] bytes = javax.xml.bind.DatatypeConverter.parseBase64Binary(value);
 			message.addAttachment("PreviaDiagnosticoFinanceiro.jpg", new ByteArrayResource(bytes));
-			 
+			
+			email.setStatusEmail(StatusEmail.SENT);
 			emailSender.send(mail);
-			email.setStatusEmail(StatusEmail.SENT); 
 			
 			/*
 			SimpleMailMessage message = new SimpleMailMessage();

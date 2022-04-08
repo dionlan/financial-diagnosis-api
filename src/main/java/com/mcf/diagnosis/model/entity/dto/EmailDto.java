@@ -18,8 +18,8 @@ public class EmailDto {
 	@NotBlank
 	private String emailTo;
 	
-	/*@NotBlank
-	private String subject;*/
+	//@NotBlank
+	private String subject;
 	
 	private String file64;
 	
