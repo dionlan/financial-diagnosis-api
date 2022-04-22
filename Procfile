@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar target/target/financial-diagnosis-api-0.0.1-SNAPSHOT.jar
+web: java -XX:+UseContainerSupport -Dfile.encoding=UTF-8 -Dserver.port=$PORT -jar target/financial-diagnosis-api-0.0.1-SNAPSHOT.jar
