@@ -12,6 +12,6 @@ public class WebConfiguration implements WebMvcConfigurer {
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		// TODO Auto-generated method stub
-		registry.addMapping("/**").allowedMethods("GET","POST", "PUT", "DELETE", "OPTIONS", "PATCH");
+		registry.addMapping("/**").allowedMethods("GET","POST", "PUT", "DELETE", "OPTIONS", "PATCH").allowedOrigins("https://chatbot-mcf-app.herokuapp.com/");
 	}
 }
