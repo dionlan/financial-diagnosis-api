@@ -19,7 +19,7 @@
 -- Table structure for table `email`
 --
 
-use heroku_a0b87f7ca3d4ed3;
+use heroku_1dbe1a6040896d0;
 
 DROP TABLE IF EXISTS `email`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
