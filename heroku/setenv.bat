@@ -6,7 +6,7 @@ SET HOMEPATH=\Temp\
 SET JAVA_HOME=C:\Progra~1\Java\jdk-17.0.1
 SET HEROKU_PATH=C:\Progra~1\heroku\bin\
 SET BROWSER=C:\Progra~1\Google\Chrome\Application\chrome.exe
-REM SET HEROKU_DEBUG=1
+SET HEROKU_DEBUG=1
 
 SET APP_NAME=financial-diagnosis-api
 SET PROJECT_PATH=C:\Users\dius_\Documents\AlgaWorkspace\%APP_NAME%\

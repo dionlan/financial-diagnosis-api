@@ -9,6 +9,8 @@ CD %PROJECT_PATH%
 CMD /C mvn clean package -Dmaven.test.skip=true
 IF ERRORLEVEL 1 PAUSE
 
+ECHO %PROJECT_HEROKU_PATH%
+
 CD %PROJECT_HEROKU_PATH%
 CMD /C %HEROKU_PATH%heroku update
 IF ERRORLEVEL 1 PAUSE
@@ -46,4 +48,4 @@ IF ERRORLEVEL 1 PAUSE
 %BROWSER% https://%APP_NAME%.herokuapp.com
 IF ERRORLEVEL 1 PAUSE
 
-REM CMD /C %HEROKU_PATH%heroku logs -t --app %APP_NAME%
+CMD /C %HEROKU_PATH%heroku logs -t --app %APP_NAME%
