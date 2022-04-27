@@ -1,8 +1,9 @@
 target/
+heroku/
+
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-!**/src/main/**/heroku/
 
 ### STS ###
 .apt_generated
