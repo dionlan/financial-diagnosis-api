@@ -40,11 +40,8 @@ public class EmailService {
 			message.setFrom(email.getEmailFrom());
 			message.setTo(email.getEmailTo());
 			message.setSubject(email.getSubject());
-			message.setText("<p><span style='font-family: \"Lucida Console\", Monaco, monospace; font-size: 14px;'>Boa noite, Sr. Afr&acirc;nio Alves de Jesus. Como vai?</span></p>\r\n"
+			message.setText("<p><span style='font-family: \"Lucida Console\", Monaco, monospace; font-size: 14px;'>Olá, "+email.getOwnerRef()+". Como vai?</span></p>\r\n"
 					+ "<p><span style='font-family: \"Lucida Console\", Monaco, monospace; font-size: 14px;'>Segue a pr&eacute;via de sua sa&uacute;de financeira.</span></p>\r\n"
-					+ "<p><span style='font-family: \"Lucida Console\", Monaco, monospace; font-size: 14px;'>Sua nota parcial foi&nbsp;<strong>95&nbsp;</strong>de 100 pontos.</span></p>\r\n"
-					+ "<p><span style='font-family: \"Lucida Console\", Monaco, monospace; font-size: 14px;'>Isso significa que o seu diagn&oacute;stico est&aacute; classificado como: </span><span style='color: rgb(65, 168, 95); font-family: \"Lucida Console\", Monaco, monospace; font-size: 14px;'><strong>BEM ESTAR FINANCEIRO</strong><strong>.</strong></span></p>\r\n"
-					+ "<p><span style='font-family: \"Lucida Console\", Monaco, monospace; font-size: 14px;'>Parab&eacute;ns por sua prosperidade financeira.</span></p>\r\n"
 					+ "<p><span style=\"font-size: 14px;\"><a href=\"https://meuconsultorfinanceiro.com\"><span style=\"font-family: 'Lucida Console', Monaco, monospace;\">MeuConsultorFinanceiro.Com</span></a></span></p>", true);
 			
 			String value = email.getFile64().replaceFirst("^data:image/[^;]*;base64,?", "");

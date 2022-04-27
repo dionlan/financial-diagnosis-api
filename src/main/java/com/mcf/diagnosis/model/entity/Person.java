@@ -38,7 +38,13 @@ public class Person implements Serializable {
 	private String name;
 	
 	@NotNull
+	private Integer age;
+	
+	@NotNull
 	private String email;
+	
+	@NotBlank
+	private String phone;
 	
 	//fk ADICIONADA e criada a coluna person_id na tabela ITEM_RESPONSE referenciando o id desta classe Person
 	@OneToMany(cascade = CascadeType.ALL) //@OneToMany + @JoinColumn associação unidirecional = APENAS a entidade PAI mapeia a relação

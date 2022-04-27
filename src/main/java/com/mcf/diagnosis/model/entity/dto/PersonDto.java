@@ -24,8 +24,15 @@ public class PersonDto {
 	private String name;
 	
 	@NotNull
+	private String age;
+	
+	@NotNull
 	@Valid
 	private String email;
+	
+	@NotNull
+	@Valid
+	private String phone;
 	
 	@NotNull
 	@Valid

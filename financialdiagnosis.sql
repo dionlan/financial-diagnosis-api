@@ -19,7 +19,7 @@
 -- Table structure for table `email`
 --
 
-use heroku_7a30e0838d17a8e;
+use heroku_52ac4186925663b;
 
 DROP TABLE IF EXISTS `email`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -142,8 +142,10 @@ DROP TABLE IF EXISTS `person`;
 /*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `person` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `age` int DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -154,7 +156,7 @@ CREATE TABLE `person` (
 
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
-INSERT INTO `person` VALUES (1,'dionlan.alves@gmail.com','dionlan'),(2,'asdf@asdf.com','asdf');
+INSERT INTO `person` VALUES (1, 'dionlan alves', 32, 'dionlan.alves@gmail.com', '(61) 98255-1566'),(2, 'asdf asdf',  31, 'asdf@asdf.com', '(61) 99999-1566');
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 
